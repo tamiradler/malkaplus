@@ -1,5 +1,7 @@
 package malka.plus.model;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,11 +15,49 @@ public class Comment
 
 	private String content;
 	
-	public String getContent() {
+	private Date date;
+	
+	private String userId;
+	
+	private String dateId;
+	
+	public Date getDate() 
+	{
+		return date;
+	}
+
+	public void setDate(Date date) 
+	{
+		this.date = date;
+	}
+
+	public String getUserId() 
+	{
+		return userId;
+	}
+
+	public void setUserId(String userId) 
+	{
+		this.userId = userId;
+	}
+
+	public String getDateId() 
+	{
+		return dateId;
+	}
+
+	public void setDateId(String dateId) 
+	{
+		this.dateId = dateId;
+	}
+
+	public String getContent() 
+	{
 		return content;
 	}
 
-	public void setContent(String content) {
+	public void setContent(String content) 
+	{
 		this.content = content;
 	}
 
