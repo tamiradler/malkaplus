@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import malka.plus.controller.CommentController;
@@ -21,5 +22,12 @@ public class CommentRestController
 	public List <Comment> getComments()
 	{
 		return commentController.getComments();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/comments/dateId/{dateId}")
+	public List <Comment> getCommentsByDateId(@PathVariable String dateId)
+	{
+		return commentController.getCommentsByDateId(dateId);
 	}
 }

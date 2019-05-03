@@ -18,4 +18,9 @@ public class CommentController
 	{
 		return 	commentRepository.findAll();
 	}
+
+	public List<Comment> getCommentsByDateId(String dateId) 
+	{
+		return 	commentRepository.findByDateId(dateId);
+	}
 }

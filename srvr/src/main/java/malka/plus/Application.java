@@ -26,6 +26,7 @@ public class Application {
 		String id = Long.toString(commentRepository.count());
 		Comment comment = new Comment();
 		comment.setId(id);
+		comment.setDateId("tamir");
 		comment.setSubject("bla bla " + id);
 		commentRepository.save(comment);
 		return id;
