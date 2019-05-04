@@ -1,0 +1,1 @@
+node_modules/.bin/ng-swagger-gen -i server_swagger.json -o src/swaggergenerate
