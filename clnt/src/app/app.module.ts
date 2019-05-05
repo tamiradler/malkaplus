@@ -7,12 +7,14 @@ import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './comments/comment/comment.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CommentsComponent,
-    CommentComponent
+    CommentComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

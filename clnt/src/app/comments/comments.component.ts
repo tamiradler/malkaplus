@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentRestControllerService } from 'src/swaggergenerate/services';
 import { Comment } from 'src/swaggergenerate/models';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-comments',
@@ -14,9 +15,14 @@ export class CommentsComponent implements OnInit {
 
   comments: Comment[]
 
-  constructor(private commentRestControllerService: CommentRestControllerService) {
-    
-   }
+
+
+  constructor(private commentRestControllerService: CommentRestControllerService, private userService: UserService) {
+    userService.user$.subscribe(data => {
+      console.log('log from comment');
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
     this.loadComments();
