@@ -8,7 +8,7 @@ import { Comment } from 'src/swaggergenerate/models';
 })
 export class CommentComponent implements OnInit {
 
-  @Input() private comment: Comment;
+  @Input() comment: Comment;
 
   constructor() { }
 

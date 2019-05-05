@@ -9,16 +9,23 @@ import { Comment } from 'src/swaggergenerate/models';
 })
 export class CommentsComponent implements OnInit {
 
-  private comments: Comment[]
+  comment: Comment = {
+  };
+
+  comments: Comment[]
 
   constructor(private commentRestControllerService: CommentRestControllerService) {
     
    }
 
   ngOnInit() {
+    this.loadComments();
+  }
+
+  loadComments() {
     this.commentRestControllerService.getCommentsUsingGET().subscribe(
       comments => {
-        this.comments = comments;
+        this.comments = comments.reverse();
       },
       error => {
         console.error(error);
@@ -26,4 +33,16 @@ export class CommentsComponent implements OnInit {
     )
   }
 
+  addComment(){
+    this.commentRestControllerService.addCommentUsingPOST(this.comment).subscribe(
+      comment => {
+        this.loadComments()
+      },
+      error => {
+
+      }
+    )
+    this.comment = {
+    };
+  }
 }

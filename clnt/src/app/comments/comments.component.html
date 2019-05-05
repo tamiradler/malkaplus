@@ -1,6 +1,12 @@
+<p>subject:</p>
+<input [(ngModel)]="comment.subject" type="text" />
+<p>content:</p>
+<input [(ngModel)]="comment.content" type="text" />
+<div>
+    <button type="button" (click)="addComment()">add comment</button>
+</div>
 <ol>
     <li *ngFor="let comment of comments; let i = index">
         <app-comment [comment]="comment"></app-comment>
     </li>
 </ol>
-
