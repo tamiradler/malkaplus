@@ -1,2 +1,2 @@
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<div (click)="signOut()">sign out</div>
+<button id="googleBtn" [hidden]="isSignIn">התחבר ע"י גוגל</button>
+<button id="disconnect" (click)="signOut()" [hidden]="!isSignIn">התנתק</button>

@@ -1,8 +1,6 @@
 declare const gapi: any;
-declare const window: any;
-var self: SignInComponent;
 
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, NgZone } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 
@@ -13,42 +11,68 @@ import { User } from '../user';
 })
 export class SignInComponent implements OnInit, AfterViewInit {
 
-  constructor(private userService: UserService) {
-    self = this;
+  isSignIn: boolean = false;
+
+  private clientId:string = '795668388432-7lor70m45089bapr51bng6t14003g4hc.apps.googleusercontent.com';
+
+  private scope = [
+    'profile',
+    'email'
+  ].join(' ');
+
+  public auth2: any;
+
+  public googleInit() {
+    let that = this;
+    gapi.load('auth2', function () {
+      that.auth2 = gapi.auth2.init({
+        client_id: that.clientId,
+        cookiepolicy: 'single_host_origin',
+        scope: that.scope
+      });
+      that.attachSignin(document.getElementById("googleBtn"));
+    });
+  }
+
+  public attachSignin(element) {
+    let that = this;
+    this.auth2.attachClickHandler(element, {},
+      googleUser => {
+        this.ngZone.run(()=>{
+          that.isSignIn = true;
+          this.userService.unsetUser();
+        });
+        
+        let profile = googleUser.getBasicProfile();
+        console.log('Token || ' + googleUser.getAuthResponse().id_token);
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+      }, error => {
+        console.log(JSON.stringify(error, undefined, 2));
+      });
+  }
+
+  constructor(private userService: UserService, private ngZone: NgZone) {
+    
   }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit(){
-    window.onSignIn = this.onSignIn;
-  }
-
-  onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    let user: User = {
-      email: profile.getEmail(),
-      familyName: profile.getFamilyName(),
-      givenName: profile.getGivenName(),
-      id: profile.getId(),
-      imageUrl: profile.getImageUrl(),
-      name: profile.getName(),
-      tokenId: googleUser.getAuthResponse().id_token
-    };
-    self.userService.setUser(user);
-  }
-
   signOut() {
-
-    console.log('blat');
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
-      this.userService.unsetUser();
+      this.ngZone.run(()=>{
+        this.isSignIn = false;
+        this.userService.unsetUser();
+      });
       console.log('User signed out.');
     });
+  }
+
+  ngAfterViewInit(){
+    this.googleInit();
   }
 }
