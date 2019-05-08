@@ -36,8 +36,10 @@ public class GoogleAuthentication implements Authentication
 	{
 		Payload payload = getPayloadFromGoogle(authTokenId);
 		User user = userRepository.findById(payload.getSubject()).orElse(new User());
-		userRepository.save(user);
+		
 		payloadToUserMapper.apply(payload, user);
+		userRepository.save(user);
+		
 		return user;
 	}
 	
