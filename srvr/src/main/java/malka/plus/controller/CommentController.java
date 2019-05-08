@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 
 import malka.plus.view.Comment;
 import malka.plus.repository.CommentRepository;
+import malka.plus.authentication.Authentication;
 import malka.plus.maps.CommentModelToViewMapper;
 import malka.plus.maps.CommentViewToModelMapper;
+import malka.plus.model.User;
 
 @Controller
 public class CommentController
@@ -23,6 +25,9 @@ public class CommentController
 	
 	@Autowired
 	private CommentViewToModelMapper commentViewToModelMapper;
+	
+	@Autowired
+	private Authentication authentication;
 	
 	public List <Comment> getComments()
 	{
@@ -38,8 +43,10 @@ public class CommentController
 		return 	comments;
 	}
 
-	public Comment addComment(Comment comment) 
+	public Comment addComment(Comment comment, String authTokenId) 
 	{
+		User user = authentication.authenticatAndGetUser(authTokenId);
+		
 		malka.plus.model.Comment commentModel = new malka.plus.model.Comment();
 		commentViewToModelMapper.apply(comment, commentModel);
 		String id = UUID.randomUUID().toString();

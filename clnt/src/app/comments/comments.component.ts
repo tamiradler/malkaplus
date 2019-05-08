@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommentRestControllerService } from 'src/swaggergenerate/services';
 import { Comment } from 'src/swaggergenerate/models';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-comments',
@@ -15,12 +16,11 @@ export class CommentsComponent implements OnInit {
 
   comments: Comment[]
 
-
+  user: User = null;
 
   constructor(private commentRestControllerService: CommentRestControllerService, private userService: UserService) {
-    userService.user$.subscribe(data => {
-      console.log('log from comment');
-      console.log(data);
+    userService.user$.subscribe(user => {
+      this.user = user;
     });
   }
 
@@ -39,13 +39,17 @@ export class CommentsComponent implements OnInit {
     )
   }
 
-  addComment(){
-    this.commentRestControllerService.addCommentUsingPOST(this.comment).subscribe(
+  addComment() {
+    let addCommentUsingPOSTParams: CommentRestControllerService.AddCommentUsingPOSTParams = {
+      authTokenId: this.user.tokenId,
+      comment: this.comment
+    }
+    this.commentRestControllerService.addCommentUsingPOST(addCommentUsingPOSTParams).subscribe(
       comment => {
         this.loadComments()
       },
       error => {
-
+        console.log(error);
       }
     )
     this.comment = {
