@@ -1,2 +1,4 @@
 <button id="googleBtn" [hidden]="isSignIn">התחבר ע"י גוגל</button>
+<p [hidden]="!isSignIn">שלום {{user?.givenName}}</p>
 <button id="disconnect" (click)="signOut()" [hidden]="!isSignIn">התנתק</button>
+

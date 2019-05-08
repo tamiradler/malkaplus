@@ -13,10 +13,13 @@ export class SignInComponent implements OnInit, AfterViewInit {
 
   isSignIn: boolean = false;
 
+  user: User;
+
   constructor(private userService: UserService, private ngZone: NgZone) {
     this.userService.user$.subscribe(user=>
       {
         ngZone.run(()=>{
+          this.user = user;
           if (user==null)
           {
             this.isSignIn = false;
