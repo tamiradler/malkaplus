@@ -34,19 +34,15 @@ public class GoogleAuthentication implements Authentication
 	@Override
 	public User authenticatAndGetUser(String authTokenId) 
 	{
-		User googleUser = getUserFromGoogle(authTokenId);
-		User repositoryUser = userRepository.findById(googleUser.getId()).orElse(new User());
-		repositoryUser.setEmail(googleUser.getEmail());
-		repositoryUser.setId(googleUser.getId());
-		ModelMapper mapper = new ModelMapper();
-		mapper.map(googleUser, repositoryUser);
-		userRepository.save(repositoryUser);
-		
-		return repositoryUser;
+		Payload payload = getPayloadFromGoogle(authTokenId);
+		User user = userRepository.findById(payload.getSubject()).orElse(new User());
+		userRepository.save(user);
+		payloadToUserMapper.apply(payload, user);
+		return user;
 	}
 	
 	
-	private User getUserFromGoogle(String authTokenId)
+	private Payload getPayloadFromGoogle(String authTokenId)
 	{
 		try
 		{
@@ -57,10 +53,8 @@ public class GoogleAuthentication implements Authentication
 			
 			GoogleIdToken idToken = verifier.verify(authTokenId);
 			Payload payload = idToken.getPayload();
-			User user = new User();
-			payloadToUserMapper.apply(payload, user);
 			
-			return user;
+			return payload;
 		}
 		catch (Exception e)
 		{
