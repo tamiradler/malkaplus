@@ -24,6 +24,13 @@ export class UserService {
     this.user$ = new BehaviorSubject(null);
   }
 
+  public getUpdatedUser(): User {
+    if (this.auth2.isSignedIn.get()) {
+      var googleUser = this.auth2.currentUser.get()
+      return this.handleGoogleUser(googleUser);
+    }
+  }
+
   public setUser(user: User){
     this.user$.next(user);
   }
@@ -52,7 +59,7 @@ export class UserService {
     });
   }
 
-  private handleGoogleUser(googleUser: any) {
+  private handleGoogleUser(googleUser: any): User {
     let profile = googleUser.getBasicProfile();
     let user: User = {
       email: profile.getEmail(),
@@ -64,6 +71,7 @@ export class UserService {
       tokenId: googleUser.getAuthResponse().id_token
     };
     this.setUser(user);
+    return user;
   }
 
   private attachSignin(element: HTMLElement) {

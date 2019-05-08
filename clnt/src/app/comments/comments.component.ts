@@ -40,6 +40,7 @@ export class CommentsComponent implements OnInit {
   }
 
   addComment() {
+    this.user = this.userService.getUpdatedUser();
     let addCommentUsingPOSTParams: CommentRestControllerService.AddCommentUsingPOSTParams = {
       authTokenId: this.user.tokenId,
       comment: this.comment
