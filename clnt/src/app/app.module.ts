@@ -8,6 +8,7 @@ import { CommentComponent } from './comments/comment/comment.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { DemoMaterialModule } from './material-module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DemoMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
