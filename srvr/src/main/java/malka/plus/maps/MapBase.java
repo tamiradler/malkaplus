@@ -6,9 +6,15 @@ import org.modelmapper.ModelMapper;
 
 public class MapBase <SRC, TARGET>
 {
+	private ModelMapper mapper = new ModelMapper();
+	
+	public ModelMapper getModelMapper()
+	{
+		return mapper;
+	}
+	
 	public void apply(SRC src, TARGET target)
 	{
-		ModelMapper mapper = new ModelMapper();
 		mapper.map(src, target);
 	}
 	
