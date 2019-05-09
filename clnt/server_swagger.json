@@ -29,6 +29,10 @@
     {
       "name": "menu-rest-controller",
       "description": "Menu Rest Controller"
+    },
+    {
+      "name": "user-rest-controller",
+      "description": "User Rest Controller"
     }
   ],
   "paths": {
@@ -108,8 +112,8 @@
         ],
         "parameters": [
           {
-            "in": "header",
             "name": "authTokenId",
+            "in": "header",
             "description": "authTokenId",
             "required": true,
             "type": "string"
@@ -506,6 +510,48 @@
         },
         "deprecated": false
       }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "user-rest-controller"
+        ],
+        "summary": "addUser",
+        "operationId": "addUserUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "authTokenId",
+            "in": "header",
+            "description": "authTokenId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
     }
   },
   "definitions": {
@@ -527,6 +573,9 @@
         },
         "subject": {
           "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
         },
         "userId": {
           "type": "string"
@@ -674,6 +723,39 @@
         }
       },
       "title": "ModelAndView"
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pictureUrl": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "User"
     },
     "View": {
       "type": "object",

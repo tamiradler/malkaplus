@@ -1,7 +1,7 @@
 <div class="media text-muted pt-3">
-    <img class="bd-placeholder-img mr-2 rounded" width="32" height="32" src="https://lh6.googleusercontent.com/-bWrkysnm4PU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcSjrz2myvEx2lZKN4QAft3mrnsdw/s96-c/photo.jpg" />
+    <img class="bd-placeholder-img mr-2 rounded" width="32" height="32" src="{{comment.user?.pictureUrl}}" />
     <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" dir="rtl">
-        <strong class="d-block text-gray-dark">@username</strong>
+        <strong class="d-block text-gray-dark">{{comment.user?.name + '(' + comment.user?.email + ')'}}</strong>
         <strong class="d-block">{{comment.subject}}</strong>
         {{comment.content}}
     </p>
