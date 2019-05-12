@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { DemoMaterialModule } from './material-module';
 import { ErrorMessageHolderComponent } from './error-message-holder/error-message-holder.component';
+import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ErrorMessageHolderComponent } from './error-message-holder/error-messag
     CommentsComponent,
     CommentComponent,
     SignInComponent,
-    ErrorMessageHolderComponent
+    ErrorMessageHolderComponent,
+    LoadSpinnerComponent
   ],
   imports: [
     BrowserModule,
