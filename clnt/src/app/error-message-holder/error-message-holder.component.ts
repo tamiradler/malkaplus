@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class ErrorMessageHolderComponent implements OnInit, OnDestroy {
 
-  private errorMessages: string[] = [];
+  errorMessages: string[] = [];
 
   constructor(private errorMessagesHolderService: ErrorMessagesHolderService) { 
     errorMessagesHolderService.getErrorMessagesObs().subscribe(
