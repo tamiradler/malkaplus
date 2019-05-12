@@ -11,7 +11,7 @@ public class Menu
 	@Id
 	private String dateId;
 	
-	private List <Course> courses;
+	private List <Dish> courses;
 
 	public String getDateId() {
 		return dateId;
@@ -21,11 +21,11 @@ public class Menu
 		this.dateId = dateId;
 	}
 
-	public List<Course> getCourses() {
+	public List<Dish> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(List<Course> courses) {
+	public void setCourses(List<Dish> courses) {
 		this.courses = courses;
 	}
 }

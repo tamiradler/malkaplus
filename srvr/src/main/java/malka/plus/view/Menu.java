@@ -2,13 +2,13 @@ package malka.plus.view;
 
 import java.util.List;
 
-import malka.plus.model.Course;
+import malka.plus.model.Dish;
 
 public class Menu 
 {
 	private String dateId;
 	
-	private List <Course> courses;
+	private List <Dish> courses;
 
 	public String getDateId() {
 		return dateId;
@@ -18,11 +18,11 @@ public class Menu
 		this.dateId = dateId;
 	}
 
-	public List<Course> getCourses() {
+	public List<Dish> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(List<Course> courses) {
+	public void setCourses(List<Dish> courses) {
 		this.courses = courses;
 	}
 }
