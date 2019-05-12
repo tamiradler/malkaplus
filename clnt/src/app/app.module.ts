@@ -9,13 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { DemoMaterialModule } from './material-module';
+import { DishComponent } from './dish/dish.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CommentsComponent,
     CommentComponent,
-    SignInComponent
+    SignInComponent,
+    DishComponent
   ],
   imports: [
     BrowserModule,
