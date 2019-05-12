@@ -583,22 +583,22 @@
       },
       "title": "Comment"
     },
-    "Course": {
+    "Dish": {
       "type": "object",
       "properties": {
-        "courseItems": {
+        "DishItems": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CourseItem"
+            "$ref": "#/definitions/DishItem"
           }
         },
         "subject": {
           "type": "string"
         }
       },
-      "title": "Course"
+      "title": "Dish"
     },
-    "CourseItem": {
+    "DishItem": {
       "type": "object",
       "properties": {
         "content": {
@@ -608,7 +608,7 @@
           "type": "string"
         }
       },
-      "title": "CourseItem"
+      "title": "DishItem"
     },
     "Menu": {
       "type": "object",
