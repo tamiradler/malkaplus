@@ -2,11 +2,11 @@ package malka.plus.model;
 
 import java.util.List;
 
-public class Course 
+public class Dish 
 {
 	private String subject;
 	
-	List <CourseItem> courseItems;
+	List <DishItem> dishItems;
 
 	public String getSubject() {
 		return subject;
@@ -16,11 +16,11 @@ public class Course
 		this.subject = subject;
 	}
 
-	public List<CourseItem> getCourseItems() {
-		return courseItems;
+	public List<DishItem> getCourseItems() {
+		return dishItems;
 	}
 
-	public void setCourseItems(List<CourseItem> courseItems) {
-		this.courseItems = courseItems;
+	public void setCourseItems(List<DishItem> courseItems) {
+		this.dishItems = courseItems;
 	}
 }

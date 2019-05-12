@@ -1,6 +1,6 @@
 package malka.plus.model;
 
-public class CourseItem
+public class DishItem
 {
 	private String subject;
 	
