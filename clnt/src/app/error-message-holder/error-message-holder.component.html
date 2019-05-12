@@ -1,0 +1,25 @@
+<!-- The Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="errorModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">שגיאה</h4>
+            </div>
+        
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div *ngFor="let errorMessage of errorMessages" class="alert alert-danger">
+                    {{errorMessage}}
+                </div>
+            </div>
+        
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button (click)="clearMessages()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        
+        </div>
+    </div>
+</div>
