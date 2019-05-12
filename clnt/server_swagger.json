@@ -613,10 +613,10 @@
     "Menu": {
       "type": "object",
       "properties": {
-        "courses": {
+        "dishes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Course"
+            "$ref": "#/definitions/Dish"
           }
         },
         "dateId": {
