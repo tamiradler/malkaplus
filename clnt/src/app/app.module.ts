@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { DemoMaterialModule } from './material-module';
 import { DishComponent } from './dish/dish.component';
+import { ErrorMessageHolderComponent } from './error-message-holder/error-message-holder.component';
+import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { DishComponent } from './dish/dish.component';
     CommentsComponent,
     CommentComponent,
     SignInComponent,
-    DishComponent
+    DishComponent,
+    ErrorMessageHolderComponent,
+    LoadSpinnerComponent
   ],
   imports: [
     BrowserModule,
