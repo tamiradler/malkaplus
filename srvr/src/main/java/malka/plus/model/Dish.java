@@ -16,11 +16,11 @@ public class Dish
 		this.subject = subject;
 	}
 
-	public List<DishItem> getCourseItems() {
+	public List<DishItem> getDishItems() {
 		return dishItems;
 	}
 
-	public void setCourseItems(List<DishItem> courseItems) {
+	public void setDishItems(List<DishItem> courseItems) {
 		this.dishItems = courseItems;
 	}
 }
