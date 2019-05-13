@@ -3,6 +3,6 @@
     <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" dir="rtl">
         <strong class="d-block text-gray-dark">{{comment.user?.name + '(' + comment.user?.email + ')'}}</strong>
         <strong class="d-block">{{comment.subject}}</strong>
-        {{comment.content}}
+        <span style="white-space: pre-line">{{comment.content}}</span>
     </p>
 </div>
