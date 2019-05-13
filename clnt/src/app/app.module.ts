@@ -9,9 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { DemoMaterialModule } from './material-module';
-import { DishComponent } from './dish/dish.component';
+import { DishComponent } from './menu/dish/dish.component';
 import { ErrorMessageHolderComponent } from './error-message-holder/error-message-holder.component';
 import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
     SignInComponent,
     DishComponent,
     ErrorMessageHolderComponent,
-    LoadSpinnerComponent
+    LoadSpinnerComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
