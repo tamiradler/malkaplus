@@ -13,6 +13,9 @@ import { DishComponent } from './menu/dish/dish.component';
 import { ErrorMessageHolderComponent } from './error-message-holder/error-message-holder.component';
 import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
 import { MenuComponent } from './menu/menu.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ApiModule } from 'src/swaggergenerate/api.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,14 +26,16 @@ import { MenuComponent } from './menu/menu.component';
     DishComponent,
     ErrorMessageHolderComponent,
     LoadSpinnerComponent,
-    MenuComponent
+    MenuComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    ApiModule.forRoot({rootUrl: environment.serverUrl})
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,5 @@
-<button id="googleBtn" [hidden]="isSignIn">התחבר ע"י גוגל</button>
-<p [hidden]="!isSignIn">שלום {{user?.givenName}}</p>
-<button id="disconnect" (click)="signOut()" [hidden]="!isSignIn">התנתק</button>
+<form class="form-inline">
+    <button class="btn btn-success" id="googleBtn" [hidden]="isSignIn">התחבר ע"י גוגל</button>
+    <label class="text-light" [hidden]="!isSignIn">שלום {{user?.givenName}}</label>
+    <button class="btn btn-outline-light my-2 my-sm-0" id="disconnect" (click)="signOut()" [hidden]="!isSignIn">התנתק</button>
+</form>
