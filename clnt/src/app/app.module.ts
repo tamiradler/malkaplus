@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { DishItemComponent } from './menu/dish/dish-item/dish-item.component';
+import { AddMenuComponent } from './add-menu/add-menu.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DishItemComponent } from './menu/dish/dish-item/dish-item.component';
     NavbarComponent,
     HomeComponent,
     DatePickerComponent,
-    DishItemComponent
+    DishItemComponent,
+    AddMenuComponent
   ],
   imports: [
     BrowserModule,
