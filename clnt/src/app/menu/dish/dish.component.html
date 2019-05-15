@@ -1,3 +1,2 @@
-<p>
-  dish works!
-</p>
+<h4>{{dish.subject}}</h4>
+<app-dish-item *ngFor="let dishitem of dish?.dishItems; let i = index" [dishitem]="dishitem"></app-dish-item>

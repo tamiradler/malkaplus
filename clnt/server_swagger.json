@@ -11,7 +11,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   },
-  "host": "localhost:8080",
+  "host": "malkaplus-239420.appspot.com",
   "basePath": "/",
   "tags": [
     {
@@ -25,6 +25,10 @@
     {
       "name": "comment-rest-controller",
       "description": "Comment Rest Controller"
+    },
+    {
+      "name": "dish-rest-controller",
+      "description": "Dish Rest Controller"
     },
     {
       "name": "menu-rest-controller",
@@ -179,6 +183,84 @@
                 "$ref": "#/definitions/Comment"
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/dishes": {
+      "get": {
+        "tags": [
+          "dish-rest-controller"
+        ],
+        "summary": "getDishes",
+        "operationId": "getDishesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Dish"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "dish-rest-controller"
+        ],
+        "summary": "addDish",
+        "operationId": "addDishUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "dish",
+            "description": "dish",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Dish"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Dish"
+            }
+          },
+          "201": {
+            "description": "Created"
           },
           "401": {
             "description": "Unauthorized"
@@ -586,7 +668,7 @@
     "Dish": {
       "type": "object",
       "properties": {
-        "DishItems": {
+        "dishItems": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/DishItem"
@@ -613,14 +695,14 @@
     "Menu": {
       "type": "object",
       "properties": {
-        "dishes": {
+        "dateId": {
+          "type": "string"
+        },
+        "dishs": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Dish"
           }
-        },
-        "dateId": {
-          "type": "string"
         }
       },
       "title": "Menu"

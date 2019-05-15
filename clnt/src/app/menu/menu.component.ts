@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuRestControllerService } from 'src/swaggergenerate/services';
+import { Menu } from 'src/swaggergenerate/models';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  menu: Menu
+
+  constructor(private menuRestControllerService: MenuRestControllerService) { }
 
   ngOnInit() {
+    this.menuRestControllerService.getMenusUsingGET().subscribe(
+      menus => {
+        menus.forEach(menu => {
+          if (menu.dateId == '15_5_2019') {
+            this.menu = menu;
+          }
+        })
+      }
+    )
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Dish } from 'src/swaggergenerate/models';
 
 @Component({
   selector: 'app-dish',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DishComponent implements OnInit {
 
-  constructor(){ 
+  @Input() dish: Dish;
 
+  constructor(){
   }
 
   ngOnInit() {
