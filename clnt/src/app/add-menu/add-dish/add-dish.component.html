@@ -1,3 +1,7 @@
-<p>
-  add-dish works!
-</p>
+<div class="card">
+  <h5 class="card-header"><input [(ngModel)]="dish.subject" type="txt" class="form-control" placeholder="סוג מנה"></h5>
+  <div class="card-body">
+    <app-add-dish-item class="container" *ngFor="let dishItem of dish?.dishItems; let i = index"  [dishItem]="dishItem"></app-add-dish-item>
+    <a href="#" class="btn btn-primary">הוספת מנה</a>
+  </div>
+</div>

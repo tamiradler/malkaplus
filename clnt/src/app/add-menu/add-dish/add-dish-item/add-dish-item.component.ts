@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DishItem } from 'src/swaggergenerate/models';
 
 @Component({
   selector: 'app-add-dish-item',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-dish-item.component.css']
 })
 export class AddDishItemComponent implements OnInit {
+
+  @Input() dishItem: DishItem;
 
   constructor() { }
 
