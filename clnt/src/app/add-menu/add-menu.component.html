@@ -1,3 +1,4 @@
+<app-date-picker></app-date-picker>
 <div class="container">
   <app-add-dish class="container" *ngFor="let dish of menu?.dishs; let i = index"  [dish]="dish"></app-add-dish>
   <button type="button" class="btn btn-success" (click)="addDish()">add</button>

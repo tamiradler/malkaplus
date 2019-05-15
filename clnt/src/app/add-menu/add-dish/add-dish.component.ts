@@ -15,4 +15,11 @@ export class AddDishComponent implements OnInit {
   ngOnInit() {
   }
 
+  addDishItem() {
+    if (this.dish.dishItems === undefined) {
+      this.dish.dishItems = [];
+    }
+    this.dish.dishItems.push({});
+  }
+
 }
