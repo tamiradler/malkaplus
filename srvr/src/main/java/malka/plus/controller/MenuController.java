@@ -42,7 +42,7 @@ public class MenuController
 	{
 		malka.plus.model.Menu menuModel = menuRepository.findById(id).orElse(new malka.plus.model.Menu());
 		Menu menu = new Menu();
-		menuViewToModelMapper.apply(menu, menuModel);
+		menuModelToViewMapper.apply(menuModel, menu);
 		return menu;
 	}
 }
