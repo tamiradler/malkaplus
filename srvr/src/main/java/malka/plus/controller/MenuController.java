@@ -38,5 +38,11 @@ public class MenuController
 		return menu;
 	}
 
-	
+	public Menu getMenus(String id) 
+	{
+		malka.plus.model.Menu menuModel = menuRepository.findById(id).orElse(new malka.plus.model.Menu());
+		Menu menu = new Menu();
+		menuViewToModelMapper.apply(menu, menuModel);
+		return menu;
+	}
 }

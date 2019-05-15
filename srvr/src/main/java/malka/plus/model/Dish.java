@@ -6,7 +6,7 @@ public class Dish
 {
 	private String subject;
 	
-	List <DishItem> dishItems;
+	private List <DishItem> dishItems;
 
 	public String getSubject() {
 		return subject;

@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import malka.plus.controller.MenuController;
@@ -26,8 +28,15 @@ public class MenuRestController
 	}
 	
 	@CrossOrigin
+	@GetMapping("/menus/{id}")
+	public Menu getMenus(@PathVariable String id)
+	{
+		return menuController.getMenus(id);
+	}
+	
+	@CrossOrigin
 	@PostMapping("/menus")
-	public Menu addMenu(@RequestBody Menu menu)
+	public Menu addMenu(@RequestBody Menu menu, @RequestHeader("authTokenId") String authTokenId)
 	{
 		return menuController.addMenu(menu);
 	}
