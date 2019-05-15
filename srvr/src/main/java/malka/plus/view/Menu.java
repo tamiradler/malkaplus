@@ -8,7 +8,7 @@ public class Menu
 {
 	private String dateId;
 	
-	private List <Dish> courses;
+	private List <Dish> dishs;
 
 	public String getDateId() {
 		return dateId;
@@ -18,11 +18,11 @@ public class Menu
 		this.dateId = dateId;
 	}
 
-	public List<Dish> getCourses() {
-		return courses;
+	public List<Dish> getDishs() {
+		return dishs;
 	}
 
-	public void setCourses(List<Dish> courses) {
-		this.courses = courses;
+	public void setDishs(List<Dish> dishs) {
+		this.dishs = dishs;
 	}
 }
