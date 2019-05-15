@@ -21,6 +21,8 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { DishItemComponent } from './menu/dish/dish-item/dish-item.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
+import { AddDishComponent } from './add-menu/add-dish/add-dish.component';
+import { AddDishItemComponent } from './add-menu/add-dish/add-dish-item/add-dish-item.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AddMenuComponent } from './add-menu/add-menu.component';
     HomeComponent,
     DatePickerComponent,
     DishItemComponent,
-    AddMenuComponent
+    AddMenuComponent,
+    AddDishComponent,
+    AddDishItemComponent
   ],
   imports: [
     BrowserModule,
