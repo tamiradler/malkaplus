@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from 'src/swaggergenerate/models';
+import { MenuRestControllerService } from 'src/swaggergenerate/services';
+import { DatePickerService } from '../date-picker/date-picker.service';
+import { LoadSpinnerService } from '../load-spinner/load-spinner-service';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-add-menu',
@@ -10,9 +15,17 @@ export class AddMenuComponent implements OnInit {
 
   menu: Menu = {};
 
-  constructor() { }
+  date: Date;
+
+  constructor(private menuRestControllerService: MenuRestControllerService, 
+    private datePickerService: DatePickerService,
+    private loadSpinnerService: LoadSpinnerService,
+    private userService: UserService) { }
 
   ngOnInit() {
+    this.datePickerService.date$.subscribe(date => {
+      this.date = date;
+    })
     this.menu.dishs = [];
   }
 
@@ -21,5 +34,28 @@ export class AddMenuComponent implements OnInit {
       subject: "מנת השף",
       dishItems: [{content: "לחי", subject: "לחי בקר"}, {content: "חזה חתול", subject: "חזה חתול על מצע של חרא"}]
     });
+  }
+
+  submit() {
+    let dateKey: string = this.date.getDate() + '_' + (this.date.getMonth()+1) + '_' + this.date.getFullYear();
+    this.menu.dateId = dateKey;
+    let user: User = this.userService.getUpdatedUser();
+    if (user == null) {
+      return;
+    }
+    
+    let param: MenuRestControllerService.AddMenuUsingPOSTParams = {
+      authTokenId: user.tokenId,
+      menu: this.menu
+    }
+    this.loadSpinnerService.addRequestor('submit');
+    this.menuRestControllerService.addMenuUsingPOST(param).subscribe(
+      menu => {
+        this.loadSpinnerService.removeRequestor('submit');
+      },
+      error => {
+        this.loadSpinnerService.removeRequestor('submit');
+      }
+    )
   }
 }

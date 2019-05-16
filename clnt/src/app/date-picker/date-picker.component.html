@@ -1,5 +1,5 @@
 <mat-form-field style="margin-right: 30%;">
-  <input (ngModelChange)="dateChanged()" [(ngModel)]="date" matInput [matDatepicker]="picker" placeholder="תאריך" disabled>
+  <input (ngModelChange)="dateChanged($event)" [(ngModel)]="date" matInput [matDatepicker]="picker" placeholder="תאריך" disabled>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker disabled="false"></mat-datepicker>
 </mat-form-field>

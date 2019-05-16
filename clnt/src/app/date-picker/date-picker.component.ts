@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePickerService } from './date-picker.service';
 
 @Component({
   selector: 'app-date-picker',
@@ -9,12 +10,14 @@ export class DatePickerComponent implements OnInit {
 
   date: Date = new Date();
 
-  constructor() { }
+  constructor(private datePickerService: DatePickerService) {
+    this.dateChanged(new Date());
+  }
 
   ngOnInit() {
   }
 
-  dateChanged() {
-    console.log("date changed");
+  dateChanged(date: Date) {
+    this.datePickerService.setDate(date);
   }
 }
