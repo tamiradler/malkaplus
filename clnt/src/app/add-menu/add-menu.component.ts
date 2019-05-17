@@ -31,8 +31,7 @@ export class AddMenuComponent implements OnInit {
 
   addDish() {
     this.menu.dishs.push({
-      subject: "מנת השף",
-      dishItems: [{content: "לחי", subject: "לחי בקר"}, {content: "חזה חתול", subject: "חזה חתול על מצע של חרא"}]
+      dishItems: []
     });
   }
 

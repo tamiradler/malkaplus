@@ -4,5 +4,5 @@ import malka.plus.model.User;
 
 public interface Authentication 
 {
-	User authenticatAndGetUser(String authTokenId);
+	User authenticatAndGetUser(String authTokenId, String ... requiredSkills);
 }

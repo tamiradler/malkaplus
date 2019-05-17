@@ -38,6 +38,6 @@ public class MenuRestController
 	@PostMapping("/menus")
 	public Menu addMenu(@RequestBody Menu menu, @RequestHeader("authTokenId") String authTokenId)
 	{
-		return menuController.addMenu(menu);
+		return menuController.addMenu(menu, authTokenId);
 	}
 }
