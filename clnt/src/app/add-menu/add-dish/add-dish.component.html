@@ -1,5 +1,9 @@
 <div class="card">
-  <h5 class="card-header"><input [(ngModel)]="dish.subject" type="txt" class="form-control" placeholder="סוג מנה"></h5>
+  <div class="card-header">
+      <button type="button" class="btn btn-danger"><i class="material-icons">clear</i></button>
+      <h5><input [(ngModel)]="dish.subject" type="txt" class="form-control" placeholder="סוג מנה"></h5>
+  </div>
+  
   <div class="card-body">
     <app-add-dish-item class="container" *ngFor="let dishItem of dish?.dishItems; let i = index"  [dishItem]="dishItem"></app-add-dish-item>
     <a class="btn btn-primary" (click)="addDishItem()">הוספת מנה</a>

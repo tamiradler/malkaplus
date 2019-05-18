@@ -1,6 +1,7 @@
 package malka.plus.authentication;
 
 import java.util.Collections;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -55,13 +56,15 @@ public class GoogleAuthentication implements Authentication
 			return;
 		}
 		
-		for (String skill : requiredSkills) 
+		boolean anySkillExist = 
+			Stream.of(requiredSkills)
+			.anyMatch(skill -> user.getSkills().contains(skill));
+		
+		if (anySkillExist)
 		{
-			if (user.getSkills().contains(skill))
-			{
-				return;
-			}
+			return;
 		}
+		
 		throw new AuthenticationException("Authentication failed - the user dont have any skill from the list - " + requiredSkills);
 	}
 

@@ -25,8 +25,26 @@ export class AddMenuComponent implements OnInit {
   ngOnInit() {
     this.datePickerService.date$.subscribe(date => {
       this.date = date;
+      this.loadMenu(date);
     })
-    this.menu.dishs = [];
+  }
+
+  loadMenu(date: Date) {
+    let dateKey: string = date.getDate() + '_' + (date.getMonth()+1) + '_' + date.getFullYear();
+    
+    this.loadSpinnerService.addRequestor('loadMenu');
+    this.menuRestControllerService.getMenusUsingGET(dateKey).subscribe(
+      menu => {
+        this.loadSpinnerService.removeRequestor('loadMenu');
+        this.menu = menu;
+        if (this.menu.dishs == null) {
+          this.menu.dishs = [];
+        }
+      },
+      error => {
+        this.loadSpinnerService.removeRequestor('loadMenu');
+      }
+    )
   }
 
   addDish() {
