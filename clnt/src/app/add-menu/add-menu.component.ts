@@ -1,3 +1,4 @@
+import { ErrorMessagesHolderService } from './../error-messages-holder-service';
 import { Component, OnInit } from '@angular/core';
 import { Menu } from 'src/swaggergenerate/models';
 import { MenuRestControllerService } from 'src/swaggergenerate/services';
@@ -17,10 +18,11 @@ export class AddMenuComponent implements OnInit {
 
   date: Date;
 
-  constructor(private menuRestControllerService: MenuRestControllerService, 
+  constructor(private menuRestControllerService: MenuRestControllerService,
     private datePickerService: DatePickerService,
     private loadSpinnerService: LoadSpinnerService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private errorMessagesHolderService: ErrorMessagesHolderService) { }
 
   ngOnInit() {
     this.datePickerService.date$.subscribe(date => {
@@ -31,7 +33,7 @@ export class AddMenuComponent implements OnInit {
 
   loadMenu(date: Date) {
     let dateKey: string = date.getDate() + '_' + (date.getMonth()+1) + '_' + date.getFullYear();
-    
+
     this.loadSpinnerService.addRequestor('loadMenu');
     this.menuRestControllerService.getMenusUsingGET(dateKey).subscribe(
       menu => {
@@ -58,9 +60,10 @@ export class AddMenuComponent implements OnInit {
     this.menu.dateId = dateKey;
     let user: User = this.userService.getUpdatedUser();
     if (user == null) {
+      this.errorMessagesHolderService.addMessage('בשביל לשמור תפריט צריך להתחבר');
       return;
     }
-    
+
     let param: MenuRestControllerService.AddMenuUsingPOSTParams = {
       authTokenId: user.tokenId,
       menu: this.menu
