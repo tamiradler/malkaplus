@@ -9,6 +9,8 @@ import { Dish } from 'src/swaggergenerate/models';
 export class AddDishComponent implements OnInit {
 
   @Input() dish: Dish;
+  @Input() dishs: Array<Dish>;
+  @Input() index: number;
 
   constructor() { }
 
@@ -22,4 +24,7 @@ export class AddDishComponent implements OnInit {
     this.dish.dishItems.push({});
   }
 
+  remove() {
+    this.dishs.splice(this.index, 1);
+  }
 }

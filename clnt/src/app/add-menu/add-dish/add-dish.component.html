@@ -1,11 +1,15 @@
 <div class="card">
   <div class="card-header">
-      <button type="button" class="btn btn-danger"><i class="material-icons">clear</i></button>
-      <h5><input [(ngModel)]="dish.subject" type="txt" class="form-control" placeholder="סוג מנה"></h5>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <button type="button" class="btn btn-danger" (click)="remove()"><i class="material-icons" style="font-size: 18px;">clear</i></button>
+        </div>
+        <input [(ngModel)]="dish.subject" type="txt" class="form-control" placeholder="סוג מנה">
+      </div>      
   </div>
   
   <div class="card-body">
-    <app-add-dish-item class="container" *ngFor="let dishItem of dish?.dishItems; let i = index"  [dishItem]="dishItem"></app-add-dish-item>
+    <app-add-dish-item class="container" *ngFor="let dishItem of dish?.dishItems; let i = index"  [dishItem]="dishItem" [dishItems]="dish?.dishItems" [index]="i"></app-add-dish-item>
     <a class="btn btn-primary" (click)="addDishItem()">הוספת מנה</a>
   </div>
 </div>

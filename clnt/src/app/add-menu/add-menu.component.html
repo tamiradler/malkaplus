@@ -1,6 +1,6 @@
 <app-date-picker></app-date-picker>
 <div class="container">
-  <app-add-dish class="container" *ngFor="let dish of menu?.dishs; let i = index"  [dish]="dish"></app-add-dish>
+  <app-add-dish class="container" *ngFor="let dish of menu?.dishs; let i = index"  [dish]="dish" [dishs]="menu?.dishs" [index]="i"></app-add-dish>
   <button type="button" class="btn btn-success" (click)="addDish()">הוסף</button>
   <button type="button" class="btn btn-success" (click)="submit()">שמור</button>
 </div>
