@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Dish } from 'src/swaggergenerate/models';
 
 @Component({
@@ -9,6 +9,8 @@ import { Dish } from 'src/swaggergenerate/models';
 export class AddDishComponent implements OnInit {
 
   @Input() dish: Dish;
+  @Input() dishIndex: number;
+  @Output() dishRemoved = new EventEmitter < {index: number} > ();
 
   constructor() { }
 
@@ -22,4 +24,7 @@ export class AddDishComponent implements OnInit {
     this.dish.dishItems.push({});
   }
 
+  onRemoveDish(){
+    this.dishRemoved.emit({index: this.dishIndex});
+  }
 }

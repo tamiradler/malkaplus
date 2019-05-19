@@ -31,6 +31,14 @@ export class AddMenuComponent implements OnInit {
     })
   }
 
+  onDishRemoved(dishRemoved: {index: number})
+  {
+    if(this.menu.dishs !== undefined)
+    {
+      this.menu.dishs.splice(dishRemoved.index, 1);
+    }
+  }
+
   loadMenu(date: Date) {
     let dateKey: string = date.getDate() + '_' + (date.getMonth()+1) + '_' + date.getFullYear();
 
@@ -50,6 +58,9 @@ export class AddMenuComponent implements OnInit {
   }
 
   addDish() {
+    if (this.menu.dishs === undefined){
+      this.menu.dishs = [];
+    }
     this.menu.dishs.push({
       dishItems: []
     });
