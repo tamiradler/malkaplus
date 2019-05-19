@@ -66,6 +66,7 @@ public class CommentController
 	{
 		List <Comment> comments = new ArrayList<>();
 		commentModelToViewMapper.apply(commentRepository.findByDateId(dateId), comments, Comment.class);
+		attacheUsers(comments);
 		return 	comments;
 	}
 
