@@ -71,6 +71,7 @@ export class AddMenuComponent implements OnInit {
     this.menu.dateId = dateKey;
     let user: User = this.userService.getUpdatedUser();
     if (user == null) {
+      this.errorMessagesHolderService.clearMessages();
       this.errorMessagesHolderService.addMessage('בשביל לשמור תפריט צריך להתחבר');
       return;
     }
