@@ -5,7 +5,7 @@
   </div>
 
   <div class="card-body">
-    <app-add-dish-item class="container" *ngFor="let dishItem of dish?.dishItems; let i = index"  [dishItem]="dishItem"></app-add-dish-item>
+    <app-add-dish-item class="container" *ngFor="let dishItem of dish?.dishItems; let i = index"  [dishItem]="dishItem" [dishItems]="dish?.dishItems" [index]="i"></app-add-dish-item>
     <a class="btn btn-primary" (click)="addDishItem()">הוספת מנה</a>
   </div>
 </div>

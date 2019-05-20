@@ -1,10 +1,9 @@
 <div class="container">
-
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#commentModal">
         הוסף תגובה
     </button>
-      
+    
       <!-- Modal -->
       <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -36,8 +35,11 @@
       </div>
 
 
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div [hidden]="comments?.length == 0" class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">תגובות:</h6>
         <app-comment *ngFor="let comment of comments; let i = index" [comment]="comment"></app-comment>
+    </div>
+    <div [hidden]="comments?.length > 0" class="jumbotron">
+      <p class="lead">אין תגובות היום.</p>
     </div>
 </div>
