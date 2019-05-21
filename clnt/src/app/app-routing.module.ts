@@ -7,8 +7,8 @@ import { AddDishComponentComponent } from './add-dish-component/add-dish-compone
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'addDishes', component: AddMenuComponent },
-  { path: 'buildMenu', component: AddDishComponentComponent}
+  { path: 'addDishes', component: AddDishComponentComponent},
+  { path: 'buildMenu', component: AddMenuComponent}
 ];
 
 @NgModule({
