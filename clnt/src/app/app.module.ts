@@ -23,6 +23,7 @@ import { DishItemComponent } from './menu/dish/dish-item/dish-item.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
 import { AddDishComponent } from './add-menu/add-dish/add-dish.component';
 import { AddDishItemComponent } from './add-menu/add-dish/add-dish-item/add-dish-item.component';
+import { AddDishComponentComponent } from './add-dish-component/add-dish-component.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddDishItemComponent } from './add-menu/add-dish/add-dish-item/add-dish
     DishItemComponent,
     AddMenuComponent,
     AddDishComponent,
-    AddDishItemComponent
+    AddDishItemComponent,
+    AddDishComponentComponent
   ],
   imports: [
     BrowserModule,
