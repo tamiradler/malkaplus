@@ -15,10 +15,10 @@
     <div class="w-100"></div>
 
     <div class="col">
-      <div class="row">
+      <div class="row-5">
           <div class="col" style="overflow: auto; max-height: 700px; direction: ltr">
-            <div *ngFor="let dish of testMenu?.dishs | filter : searchText">
-                <div  *ngFor="let oneDishItem of dish?.dishItems" class="list-group" style="cursor: pointer">
+            <div *ngFor="let dish of testMenu?.dishs ">
+                <div  *ngFor="let oneDishItem of dish?.dishItems | filter : searchText" class="list-group" style="cursor: pointer">
                     <a class="list-group-item list-group-item-action">
                       <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1" >{{oneDishItem.subject}}</h5>
@@ -26,7 +26,6 @@
                     </a>
                 </div>
             </div>
-
           </div>
       </div>
     </div>

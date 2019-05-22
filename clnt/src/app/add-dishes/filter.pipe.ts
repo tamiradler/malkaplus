@@ -12,19 +12,9 @@ export class FilterPipe implements PipeTransform {
     // searchText = searchText.toLowerCase();
 
     return items.filter( it => {
-      return this.isExistInDishItemSubject(it, searchText);
+      return it.subject.includes(searchText);
     });
 
 
    }
-
-   isExistInDishItemSubject(it: {dishItems: DishItem[], subject: string}, searchText: string){
-    for (let item of it.dishItems){
-      if(item.subject.includes(searchText))
-      {
-        return true;
-      }
-    }
-    return false;
-  }
 }
