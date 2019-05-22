@@ -19,14 +19,14 @@ export class ShowMenuComponent implements OnInit {
     let file    = event.target.files[0];
     let reader: FileReader  = new FileReader();
 
-  reader.addEventListener("load", function () {
-    preview.src = reader.result as string;
-    console.log(reader.result);
-  }, false);
+    reader.addEventListener("load", function () {
+      preview.src = reader.result as string;
+      console.log(reader.result);
+    }, false);
 
-  if (file) {
-    reader.readAsDataURL(file);
-  }
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
 }
