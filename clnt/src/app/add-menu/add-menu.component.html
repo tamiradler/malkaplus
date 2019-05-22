@@ -6,7 +6,7 @@
 
   <div class="row">
     <div class="col">
-      <input class="form-control" type="text" placeholder="חיפוש מנה" aria-label="Search">
+      <input [(ngModel)]="searchText" class="form-control" type="text" placeholder="חיפוש מנה" aria-label="Search">
     </div>
 
     <div class="col">
@@ -17,33 +17,14 @@
     <div class="col">
       <div class="row">
           <div class="col" style="overflow: auto; max-height: 700px; direction: ltr">
-              <div class="list-group" style="cursor: pointer">
+              <div *ngFor="let dish of testMenu?.dishs | filter : searchText" class="list-group" style="cursor: pointer">
                   <a class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">נושא מנה 1</h5>
+                      <h5 class="mb-1">{{dish.subject}}</h5>
                     </div>
-                    <p class="mb-1">תוכן מנת שף</p>
-                    <small class="text-muted">Bla Bla Bla</small>
+                    <p class="mb-1" *ngFor="let oneDishItem of dish?.dishItems">{{oneDishItem.subject}}</p>
                   </a>
                 </div>
-                <div class="list-group" style="cursor: pointer">
-                    <a class="list-group-item list-group-item-action">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">נושא מנה 2</h5>
-                      </div>
-                      <p class="mb-1">תוכן עיקרית</p>
-                      <small class="text-muted">Bla Bla Bla</small>
-                    </a>
-                  </div>
-                  <div class="list-group" style="cursor: pointer">
-                      <a class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">נושא מנה 3</h5>
-                        </div>
-                        <p class="mb-1">תוכן בלה בלה</p>
-                        <small class="text-muted">Bla Bla Bla</small>
-                      </a>
-                    </div>
           </div>
       </div>
     </div>

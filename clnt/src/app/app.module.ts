@@ -24,6 +24,7 @@ import { AddMenuComponent } from './add-menu/add-menu.component';
 import { AddDishComponent } from './add-menu/add-dish/add-dish.component';
 import { AddDishItemComponent } from './add-menu/add-dish/add-dish-item/add-dish-item.component';
 import { AddDishesComponent } from './add-dishes/add-dishes.component';
+import { FilterPipe } from './add-dishes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AddDishesComponent } from './add-dishes/add-dishes.component';
     AddMenuComponent,
     AddDishComponent,
     AddDishItemComponent,
-    AddDishesComponent
+    AddDishesComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
