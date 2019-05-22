@@ -9,9 +9,11 @@
       <input [(ngModel)]="searchText" class="form-control" type="text" placeholder="חיפוש מנה" aria-label="Search">
     </div>
 
-    <div class="col">
+    <div class="col ">
         <p class="text-center">תפריט</p>
     </div>
+
+
     <div class="w-100"></div>
 
     <div class="col">
@@ -19,7 +21,7 @@
           <div class="col" style="overflow: auto; max-height: 700px; direction: ltr">
             <div *ngFor="let dish of testMenu?.dishs ">
                 <div  *ngFor="let oneDishItem of dish?.dishItems | filter : searchText" class="list-group" style="cursor: pointer">
-                    <a class="list-group-item list-group-item-action">
+                    <a class="list-group-item list-group-item-action list-group-item-info">
                       <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1" >{{oneDishItem.subject}}</h5>
                       </div>
@@ -32,9 +34,11 @@
 
 
 
-    <div class="col border border-primary">
+    <div class="col border border-primary" style="height: 700px">
 
     </div>
+
+
 
   </div>
 </div>
