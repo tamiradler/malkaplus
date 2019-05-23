@@ -1,11 +1,15 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { NavbarToggleService } from '../navbar/navbar.toggle.service';
 
 @Component({
   selector: 'app-show-menu',
   templateUrl: './show-menu.component.html',
   styleUrls: ['./show-menu.component.css']
 })
-export class ShowMenuComponent implements OnInit, AfterViewInit {
+export class ShowMenuComponent implements OnInit, AfterViewInit, OnDestroy {
+  ngOnDestroy(): void {
+    this.navbarToggleService.data.isToShowNavBar = true;
+  }
   
   ngAfterViewInit(): void {
     let div = document.getElementById('contentWithImage');
@@ -15,9 +19,10 @@ export class ShowMenuComponent implements OnInit, AfterViewInit {
   headlineColor: String;
   contentColor: String;
 
-  constructor() { }
+  constructor(private navbarToggleService: NavbarToggleService) { }
 
   ngOnInit() {
+    this.navbarToggleService.data.isToShowNavBar = false;
   }
 
   previewFile(event) {
