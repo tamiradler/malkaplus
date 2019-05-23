@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-show-menu',
   templateUrl: './show-menu.component.html',
   styleUrls: ['./show-menu.component.css']
 })
-export class ShowMenuComponent implements OnInit {
+export class ShowMenuComponent implements OnInit, AfterViewInit {
+  
+  ngAfterViewInit(): void {
+    let div = document.getElementById('contentWithImage');
+    div.style.backgroundImage = "url(" + localStorage.getItem('imageResult') + ")";
+  }
 
   headlineColor: String;
   contentColor: String;
@@ -15,16 +20,13 @@ export class ShowMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  
-
   previewFile(event) {
-    let preview = document.querySelector('img');
+    let div = document.getElementById('contentWithImage');
     let file    = event.target.files[0];
     let reader: FileReader  = new FileReader();
-
     reader.addEventListener("load", function () {
-      preview.src = reader.result as string;
-      console.log(reader.result);
+      div.style.backgroundImage = "url(" + reader.result as string + ")";
+      localStorage.setItem('imageResult', reader.result as string);
     }, false);
 
     if (file) {

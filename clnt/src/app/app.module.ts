@@ -26,6 +26,7 @@ import { AddDishItemComponent } from './add-menu/add-dish/add-dish-item/add-dish
 import { AddDishesComponent } from './add-dishes/add-dishes.component';
 import { FilterPipe } from './add-dishes/filter.pipe';
 import { ShowMenuComponent } from './show-menu/show-menu.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ShowMenuComponent } from './show-menu/show-menu.component';
     ApiModule.forRoot({rootUrl: environment.serverUrl})
   ],
   providers: [
+    CookieService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
   ],
   bootstrap: [AppComponent]
