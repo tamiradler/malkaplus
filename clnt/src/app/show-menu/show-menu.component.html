@@ -1,2 +1,8 @@
 <input type="file" (change)="previewFile($event)"><br>
 <img src="" alt="Image preview...">
+<input type="color" id="headlineColor" (change)="headlineColorChange($event)" value="#ff0000" >
+<input type="color" id="contentColor" (change)="contentColorChange($event)" value="#ff0000" >
+
+
+<div [style.color]="headlineColor">header</div>
+<div [style.color]="contentColor">content</div>

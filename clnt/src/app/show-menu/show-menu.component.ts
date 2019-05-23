@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowMenuComponent implements OnInit {
 
+  headlineColor: String;
+  contentColor: String;
+
   constructor() { }
 
   ngOnInit() {
@@ -27,6 +30,16 @@ export class ShowMenuComponent implements OnInit {
     if (file) {
       reader.readAsDataURL(file);
     }
+  }
+
+  headlineColorChange(event) {
+    console.log(event.target.value);
+    this.headlineColor = event.target.value;
+  }
+
+  contentColorChange(event) {
+    console.log(event.target.value);
+    this.contentColor = event.target.value;
   }
 
 }
