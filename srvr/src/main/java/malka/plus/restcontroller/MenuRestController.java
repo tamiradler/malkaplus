@@ -40,4 +40,18 @@ public class MenuRestController
 	{
 		return menuController.addMenu(menu, authTokenId);
 	}
+	
+	@CrossOrigin
+	@GetMapping("/DistinctSubjects")
+	public List <String> getDistinctSubjects()
+	{
+		return menuController.getDistinctSubjects();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/DistinctDishes")
+	public List <String> getDistinctDishes()
+	{
+		return menuController.getDistinctDishes();
+	}
 }

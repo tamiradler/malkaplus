@@ -1,44 +1,113 @@
+<div class="container-fluid" style="background-image:url('../../assets/images/background-2.jpg'); background-size: auto;">
 
-<div class="container">
     <div class="row">
+      <div class="container d-flex justify-content-center">
         <app-date-picker></app-date-picker>
-    </div>
-
-  <div class="row">
-    <div class="col">
-      <input [(ngModel)]="searchText" class="form-control" type="text" placeholder="חיפוש מנה" aria-label="Search">
-    </div>
-
-    <div class="col ">
-        <p class="text-center">תפריט</p>
-    </div>
-
-
-    <div class="w-100"></div>
-
-    <div class="col">
-      <div class="row-5">
-          <div class="col" style="overflow: auto; max-height: 700px; direction: ltr">
-            <div *ngFor="let dish of testMenu?.dishs ">
-                <div  *ngFor="let oneDishItem of dish?.dishItems | filter : searchText" class="list-group" style="cursor: pointer">
-                    <a class="list-group-item list-group-item-action list-group-item-info">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1" >{{oneDishItem.subject}}</h5>
-                      </div>
-                    </a>
-                </div>
-            </div>
-          </div>
       </div>
     </div>
 
+  <div class="row">
+
+    <div class="w-100"></div>
+
+    <div class="col border-right">
+        <div class="container mb-3">
+            <div class="col d-flex justify-content-center">
+                <i class="material-icons">
+                    search
+                </i>
+                <div class="col">
+                    <input [(ngModel)]="searchSubjectText" class="form-control" type="text" placeholder="חיפוש סוג מנה" aria-label="Search">
+                </div>
+            </div>
+        </div>
+
+        <div class="row-5" >
+            <div class="col" style="overflow: auto; height: 700px; max-height: 700px; direction: ltr">
+              <div *ngFor="let subject of distinctSubjects | filter : searchSubjectText" class="list-group" style="cursor: pointer">
+                      <a id="oneSubject" (click)="onSubjectClick(subject)" class="list-group-item list-group-item-action list-group-item-success" id="subjectCol">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1" >{{subject}}</h5>
+                        </div>
+                      </a>
+              </div>
+            </div>
+        </div>
+
+      </div>
+
+    <div class="col border-right">
+      <div class="container mb-3">
+          <div class="col d-flex justify-content-center">
+              <i class="material-icons">
+                  search
+              </i>
+              <div class="col">
+                  <input [(ngModel)]="searchDishText" class="form-control" type="text" placeholder="חיפוש מנה" aria-label="Search">
+              </div>
+          </div>
+      </div>
 
 
-    <div class="col border border-primary" style="height: 700px">
+        <div class="row-5">
+          <div class="col" style="overflow: auto; height: 700px; max-height: 700px; direction: ltr">
+            <div *ngFor="let dish of distinctDishes | filter : searchDishText" style="cursor: pointer">
+                    <a (click)="onDishClick(dish)" class="list-group-item list-group-item-action list-group-item-info" id="dishList">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1" >{{dish}}</h5>
+                      </div>
+                    </a>
+            </div>
+          </div>
+      </div>
 
     </div>
 
 
+    <div class="col ml-4 mr-4" style="overflow: auto; height: 700px; max-height: 700px; direction: ltr">
+      <div class="container">
+          <div class="row justify-content-center">
+              <h3>התפריט</h3>
+            </div>
+            <div class="row mt-2 mb-2 justify-content-center">
+              <button [disabled]="savedMenuElement.length == 0" (click)="onSaveNewMenu()" type="button mr-5" class="btn btn-success">שמירת תפריט</button>
+            </div>
+      </div>
+
+
+      <ul *ngFor="let saved of savedMenuElement" class="list-group">
+          <li class="list-group-item">
+              <div id="menuBuilderCard" class="card bg-light mb-3">
+                  <div class="card-body text-dark" >
+                      <h3 *ngFor="let subject of saved.newMenuSubjects" class="card-header mb-3">{{subject}}</h3>
+                      <h5 *ngFor="let dish of saved.newDishes" class="card-text">{{dish}}</h5>
+                      <div class="container">
+                          <a class="btn btn-danger " (click)="onRemoveNewDish(saved.newMenuSubjects)">הסרה</a>
+                      </div>
+                  </div>
+              </div>
+          </li>
+      </ul>
+
+      <ul *ngFor="let subject of newMenuSubjects" class="list-group" >
+          <li class="list-group-item">
+              <div id="menuBuilderCard" class="card border-primary mb-3">
+                  <div class="card-body" >
+                      <h3 class="card-header mb-3">{{subject}}</h3>
+                      <h5 *ngFor="let dish of newDishes" class="card-text">{{dish}}</h5>
+                      <div class="container">
+                          <a class="btn btn-success" (click)="onSaveNewDish()">שמירת מנה</a>
+                          <a class="btn btn-danger mr-2" (click)="onCancelNewDish()">ביטול</a>
+                      </div>
+                  </div>
+              </div>
+          </li>
+      </ul>
+
+    </div>
 
   </div>
+
+
+
 </div>
