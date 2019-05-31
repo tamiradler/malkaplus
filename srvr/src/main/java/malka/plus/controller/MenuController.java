@@ -1,18 +1,18 @@
 package malka.plus.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import malka.plus.authentication.Authentication;
-import malka.plus.maps.DishModelToViewMapper;
 import malka.plus.maps.MenuModelToViewMapper;
 import malka.plus.maps.MenuViewToModelMapper;
 import malka.plus.model.DishItem;
 import malka.plus.repository.MenuRepository;
-import malka.plus.view.Dish;
 import malka.plus.view.Menu;
 
 @Controller
@@ -57,50 +57,36 @@ public class MenuController
 	
 	public List<String> getDistinctSubjects()
 	{
-		List <String> subjects = new ArrayList<String>();
+		Set <String> subjects = new HashSet<>();
 		
 		List <malka.plus.model.Menu> menusModels = menuRepository.findAll();
-		for (malka.plus.model.Menu menu : menusModels) 
-		{
-			if(menu.getDishs() != null)
+		menusModels.forEach(menu -> {
+			List<malka.plus.model.Dish> dishesModels = menu.getDishs();
+			if(dishesModels != null)
 			{
-				List<malka.plus.model.Dish> dishesModels = menu.getDishs();
-				for (malka.plus.model.Dish dish : dishesModels) 
-				{
-					if(!subjects.contains(dish.getSubject()))
-					{
-						subjects.add(dish.getSubject());
-					}
-				}
+				dishesModels.forEach(dish->subjects.add(dish.getSubject()));
 			}
-		}
+		});
 		
-		return subjects;
+		return new ArrayList<>(subjects);
 	}
 	
 	public List<String> getDistinctDishes()
 	{
 		List <malka.plus.model.Menu> menusModels = menuRepository.findAll();
-		List <String> dishes = new ArrayList<String>();
+		Set <String> dishes = new HashSet<>();
 		
-		for (malka.plus.model.Menu menu : menusModels) 
+		menusModels.forEach(menu ->
 		{
-			if(menu.getDishs() != null)
+			List<malka.plus.model.Dish> dishesModels = menu.getDishs();
+			if(dishesModels != null)
 			{
-				List<malka.plus.model.Dish> dishesModels = menu.getDishs();
-				for (malka.plus.model.Dish dish : dishesModels) 
-				{
+				dishesModels.forEach(dish -> {
 					List<DishItem> dishItems = dish.getDishItems();
-					for (DishItem dishItem : dishItems) 
-					{
-						if(!dishes.contains(dishItem.getSubject()))
-						{
-							dishes.add(dishItem.getSubject());
-						}
-					}
-				}
+					dishItems.forEach(dishItem -> dishes.add(dishItem.getSubject()));
+				});
 			}
-		}
-		return dishes;
+		});
+		return new ArrayList<>(dishes);
 	}
 }
