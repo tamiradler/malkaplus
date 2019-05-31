@@ -1,3 +1,114 @@
+
+
+<div class="row">
+    <div class="col align-self-center" style="margin: 0px;padding: 0px;height: 40px;">
+        <p class="text-center" style="font-size: 23px;font-weight: bold;">בניית תפריט</p>
+    </div>
+  </div>
+  <div class="row"></div>
+  <div dir="ltr" class="row text-right d-md-flex" style="margin-right: 0px;margin-left: 0px;padding-top: 5px;">
+    <div class="col" style="margin-left: 10">
+        <div class="row mr-auto" style="width: 300px;">
+          <app-date-picker></app-date-picker>
+        </div>
+        <div class="row mr-auto" style="width: 300px;">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-right"><button [disabled]="savedMenuElement.length == 0" (click)="onSaveNewMenu()" class="btn btn-primary text-right" type="button">שמירת תפריט</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="row mr-auto" style="width: 300px;">
+            <div class="col">
+                <div *ngFor="let saved of savedMenuElement" class="card shadow" style="margin-top: 10px;">
+                    <div class="card-body" style="margin-top: 0px;">
+                        <div class="row mr-auto" style="width: 30px;">
+                            <div class="col"><button (click)="onRemoveNewDish(saved.newMenuSubjects)" class="close text-danger"><span aria-hidden="true">X</span></button></div>
+                        </div>
+                        <h3 style="text-align: right" *ngFor="let subject of saved.newMenuSubjects" class="card-subtitle mb-2">{{subject}}</h3>
+                        <div class="card-footer">
+                            <h6 style="text-align: right" *ngFor="let dish of saved.newDishes" class="card-title">{{dish}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let subject of newMenuSubjects" class="card shadow" style="margin-top: 10px;">
+                    <div class="card-body" style="margin-top: 0px;">
+                        <div class="row mr-auto" style="width: 30px;">
+                            <div class="col"><button (click)="onCancelNewDish()" class="close text-danger"><span aria-hidden="true">X</span></button></div>
+                        </div>
+                        <h3 style="text-align: right" class="card-subtitle mb-2">{{subject}}</h3>
+                        <div class="card-footer">
+                            <h6 style="text-align: right" *ngFor="let dish of newDishes" class="card-title">{{dish}}</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center"><button (click)="onSaveNewDish()" class="btn btn-success" type="button">שמירת מנה</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-auto" style="width: 230px;margin-right: -18px;">
+        <div class="row">
+            <div class="col">
+                <div class="row padMar">
+                    <div class="col padMar">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center" style="font-weight: bold;margin-top: 9px;">מנות</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend"></div><input [(ngModel)]="searchDishText" class="form-control autocomplete" type="text" placeholder="חיפוש">
+                            <div class="input-group-append"><button class="btn btn-success" type="button" disabled="disabled"><i class="fa fa-search"></i></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row disableddiv">
+            <div class="col">
+                <ul *ngFor="let dish of distinctDishes | filter : searchDishText" class="list-group" style="cursor: pointer; font-size: 25px;letter-spacing: 0px;line-height: 20px;padding: 0px;margin: 0px;width: 165px;">
+                    <li id="dishCol" (click)="onDishClick(dish)" class="list-group-item list-group-item-success text-right" style="margin: 0px;margin-top: 5px;width: 201px;padding-top: 9px;"><span style="font-weight: bold;font-size: 20px;">{{dish}}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-auto" style="width: 230px;margin-right: 20px;">
+        <div class="row">
+            <div class="col">
+                <div class="row padMar">
+                    <div class="col padMar">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center" data-bs-hover-animate="swing" style="font-weight: bold;margin-top: 8px;">סוגי מנות</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend"></div><input [(ngModel)]="searchSubjectText" class="form-control autocomplete" type="text" placeholder="חיפוש">
+                            <div class="input-group-append"><button class="btn btn-info" type="button" disabled="disabled"><i class="fa fa-search"></i></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                <ul *ngFor="let subject of distinctSubjects | filter : searchSubjectText" id="subjectCol" class="list-group" style="cursor: pointer; font-size: 25px;letter-spacing: 0px;line-height: 20px;padding: 0px;margin: 0px;width: 165px;">
+                    <li (click)="onSubjectClick(subject)" class="list-group-item list-group-item-info text-right" style="margin: 0px;margin-top: 5px;width: 201px;"><span class="d-sm-flex" style="font-weight: bold;font-size: 20px;">{{subject}}</span></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+<!--
+
 <div class="container-fluid" style="background-image:url('../../assets/images/background-2.jpg'); background-size: auto;">
 
     <div class="row">
@@ -111,3 +222,4 @@
 
 
 </div>
+-->

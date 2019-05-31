@@ -66,7 +66,9 @@ export class AddMenuComponent implements OnInit {
       this.newMenuSubjects.push(subject);
     }
     let divToChange = document.getElementById('subjectCol');
-    divToChange.parentElement.parentElement.className="list-group-item disabled list-group-item-action list-group-item-success";
+    divToChange.parentElement.parentElement.className="row disableddiv";
+    let divToChange2 = document.getElementById('dishCol');
+    divToChange2.parentElement.parentElement.parentElement.className = "row"
   }
 
   onDishClick(dishItemSubject: string) {
@@ -85,7 +87,9 @@ export class AddMenuComponent implements OnInit {
     this.newMenuSubjects = [];
 
     const subjectCol = document.getElementById('subjectCol');
-    subjectCol.parentElement.parentElement.className = '';
+    subjectCol.parentElement.parentElement.className = 'row';
+    let divToChange2 = document.getElementById('dishCol');
+    divToChange2.parentElement.parentElement.parentElement.className = "row disableddiv"
   }
 
   onRemoveNewDish(subject: string[]) {
@@ -102,7 +106,9 @@ export class AddMenuComponent implements OnInit {
     this.newDishes = [] as string[];
     this.newMenuSubjects = [] as string[];
     let subjectCol = document.getElementById('subjectCol');
-    subjectCol.parentElement.parentElement.className = '';
+    subjectCol.parentElement.parentElement.className = 'row';
+    let divToChange2 = document.getElementById('dishCol');
+    divToChange2.parentElement.parentElement.parentElement.className = "row disableddiv"
   }
 
   onSaveNewMenu() {

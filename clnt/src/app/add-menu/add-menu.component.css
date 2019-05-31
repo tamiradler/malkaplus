@@ -1,0 +1,12 @@
+title {
+  text-align: center;
+}
+
+.col.align-self-center {
+  background: rgb(183, 235, 220);
+}
+
+.disableddiv {
+  pointer-events: none;
+  opacity: 0.4;
+}
