@@ -27,6 +27,7 @@ import { AddDishesComponent } from './add-dishes/add-dishes.component';
 import { FilterPipe } from './add-dishes/filter.pipe';
 import { ShowMenuComponent } from './show-menu/show-menu.component';
 import { CookieService } from 'ngx-cookie-service';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CookieService } from 'ngx-cookie-service';
     AddDishItemComponent,
     AddDishesComponent,
     FilterPipe,
-    ShowMenuComponent
+    ShowMenuComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

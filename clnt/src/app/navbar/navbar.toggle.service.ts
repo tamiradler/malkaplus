@@ -10,7 +10,8 @@ export class NavbarToggleService {
     isToShowNavBar: true,
     isToShowAddDishes: false,
     isToShowBuildMenu: false,
-    isToShowShowMenu: false
+    isToShowShowMenu: false,
+    isToShowEditUser: false
   }
 
   constructor(private userService: UserService, private ngZone: NgZone) {
@@ -44,6 +45,7 @@ export class NavbarToggleService {
       this.data.isToShowAddDishes = true;
       this.data.isToShowBuildMenu = true;
       this.data.isToShowShowMenu = true;
+      this.data.isToShowEditUser = true;
     }
   }
 
@@ -52,6 +54,7 @@ export class NavbarToggleService {
     this.data.isToShowAddDishes = false;
     this.data.isToShowBuildMenu = false;
     this.data.isToShowShowMenu = false;
+    this.data.isToShowEditUser = false;
   }
 
 }

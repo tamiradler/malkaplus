@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
 import { AddDishesComponent } from './add-dishes/add-dishes.component';
 import { ShowMenuComponent } from './show-menu/show-menu.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'addDishes', component: AddDishesComponent},
   { path: 'buildMenu', component: AddMenuComponent},
   { path: 'showMenu', component: ShowMenuComponent},
+  { path: 'editUser', component: EditUserComponent},
 ];
 
 @NgModule({

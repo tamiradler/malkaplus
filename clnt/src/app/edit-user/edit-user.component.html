@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="form-group">
+    <label for="exampleInputEmail1">הכנס אימייל</label>
+    <input [(ngModel)]="emailToSearch" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="getUser()">חפש</button>
+
+    
+  <div [hidden]="!user">
+    <label>אימייל: {{user?.email}}</label><br>
+    <label>שם: {{user?.name}}</label><br>
+    <label>סקילים:</label><br>
+    <ul>
+      <li *ngFor="let skill of user?.skills; let i = index">{{skill}}</li>
+    </ul>
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        בחר סקיל להוספה
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a *ngFor="let skill of skills; let i = index" class="dropdown-item" (click)="addSkill($event)">{{skill}}</a>
+      </div>
+    </div>
+  </div>
+</div>
