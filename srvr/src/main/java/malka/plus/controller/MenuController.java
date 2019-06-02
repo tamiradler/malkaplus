@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import malka.plus.authentication.Authentication;
+import malka.plus.constants.UserSkillsConstants;
 import malka.plus.maps.MenuModelToViewMapper;
 import malka.plus.maps.MenuViewToModelMapper;
 import malka.plus.model.DishItem;
@@ -39,7 +40,7 @@ public class MenuController
 
 	public Menu addMenu(Menu menu, String authTokenId) 
 	{
-		authentication.authenticatAndGetUser(authTokenId, "admin", "menuEditor");
+		authentication.authenticatAndGetUser(authTokenId, UserSkillsConstants.ADMIN, UserSkillsConstants.MENU_EDITOR);
 		
 		malka.plus.model.Menu menuModel = new malka.plus.model.Menu();
 		menuViewToModelMapper.apply(menu, menuModel);

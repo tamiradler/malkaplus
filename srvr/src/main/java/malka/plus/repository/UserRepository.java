@@ -9,4 +9,6 @@ import malka.plus.model.User;
 public interface UserRepository extends MongoRepository<User, String>
 {
 	List <User> findUserByIdIn(List<String> id);
+	
+	User findUserByEmail(String email);
 }

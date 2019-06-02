@@ -15,6 +15,7 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
+import malka.plus.constants.UserSkillsConstants;
 import malka.plus.exceptions.AuthenticationException;
 import malka.plus.maps.PayloadToUserMapper;
 import malka.plus.model.User;
@@ -71,9 +72,9 @@ public class GoogleAuthentication implements Authentication
 
 	private void addAdminSkillToUser(User user)
 	{
-		if (user.getId().equals(adminUserId) && !user.getSkills().contains("admin"))
+		if (user.getId().equals(adminUserId) && !user.getSkills().contains(UserSkillsConstants.ADMIN))
 		{
-			user.addSkill("admin");
+			user.addSkill(UserSkillsConstants.ADMIN);
 		}
 	}
 	

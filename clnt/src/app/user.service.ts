@@ -3,6 +3,7 @@ declare const gapi: any;
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from './user';
+import { UserRestControllerService } from 'src/swaggergenerate/services';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,11 @@ export class UserService {
   private clientId:string = '795668388432-7lor70m45089bapr51bng6t14003g4hc.apps.googleusercontent.com';
 
   public user$: BehaviorSubject<User>;
+  public userSkills$: BehaviorSubject<string[]>;
 
-  constructor() {
+  constructor(private userRestControllerService: UserRestControllerService) {
     this.user$ = new BehaviorSubject(null);
+    this.userSkills$ = new BehaviorSubject(null);
   }
 
   public getUpdatedUser(): User {
@@ -37,6 +40,7 @@ export class UserService {
 
   public unsetUser() {
     this.user$.next(null);
+    this.userSkills$.next(null);
   }
 
   public googleInit(element: HTMLElement) {
@@ -70,8 +74,17 @@ export class UserService {
       name: profile.getName(),
       tokenId: googleUser.getAuthResponse().id_token
     };
+    this.loadUserFromServer(user.tokenId);
     this.setUser(user);
     return user;
+  }
+
+  loadUserFromServer(tokenId: string) {
+    this.userRestControllerService.getUserUsingGET1(tokenId).subscribe(
+      user => {
+        this.userSkills$.next(user.skills);
+      }
+    )
   }
 
   private attachSignin(element: HTMLElement) {
