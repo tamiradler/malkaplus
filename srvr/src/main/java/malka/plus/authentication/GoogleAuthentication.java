@@ -71,7 +71,7 @@ public class GoogleAuthentication implements Authentication
 
 	private void addAdminSkillToUser(User user)
 	{
-		if (user.getId().equals(adminUserId))
+		if (user.getId().equals(adminUserId) && !user.getSkills().contains("admin"))
 		{
 			user.addSkill("admin");
 		}
