@@ -49,7 +49,28 @@ export class AddDishesComponent implements OnInit {
         this.loadSpinnerService.removeRequestor('loadMenu');
         this.menu = menu;
         if (this.menu.dishs == null) {
-          this.menu.dishs = [];
+          this.menu.dishs = [
+            {
+              dishItems: [],
+              subject: 'מנה עיקרית'
+            },
+            {
+              dishItems: [],
+              subject: 'מנת השף'
+            },
+            {
+              dishItems: [],
+              subject: 'תוספות'
+            },
+            {
+              dishItems: [],
+              subject: 'צמחוני'
+            },
+            {
+              dishItems: [],
+              subject: 'מרקים'
+            }
+          ];
         }
       },
       error => {

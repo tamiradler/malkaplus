@@ -1,3 +1,5 @@
-<div class="container">	<p>
-  <app-dish class="container" *ngFor="let dish of menu?.dishs; let i = index"  [dish]="dish"></app-dish>
+<div class="container">
+  <div class="row">
+    <app-dish class="col-4" *ngFor="let dish of menu?.dishs; let i = index"  [dish]="dish"></app-dish>
+  </div>
 </div>
