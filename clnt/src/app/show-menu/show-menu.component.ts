@@ -17,6 +17,11 @@ export class ShowMenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.hideEditorController = true;
   }
 
+  clearImage() {
+    let div = document.getElementById('contentWithImage');
+    div.style.backgroundImage = "";
+  }
+
   ngOnDestroy(): void {
     this.navbarToggleService.data.isToShowNavBar = true;
   }

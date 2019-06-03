@@ -1,7 +1,7 @@
 <div id="contentWithImage" style="background-size: cover; width: 100%; height: 100%; ">
-    <div class="container" style="padding-top: 100px;">
+    <div style="padding-top: 100px;">
         <div class="row">
-            <div *ngFor="let dish of menu?.dishs; let i = index" class="col-4" style="padding-top: 50px; padding-right: 200px; font-size: 24px">
+            <div *ngFor="let dish of menu?.dishs; let i = index" class="col-4" style="padding-top: 20px; padding-right: 250px; font-size: 24px">
                 <h4 [style.color]="headlineColor"><strong>{{dish.subject}}</strong></h4>
                 <div *ngFor="let dishitem of dish?.dishItems; let i = index">
                     <p [style.color]="contentColor">{{dishitem?.subject}}</p>
@@ -12,6 +12,7 @@
     
     <div class="container" style="position: absolute;" [hidden]="hideEditorController">
         <button type="button" class="btn btn-danger" (click)="hide()"><i class="material-icons">clear</i></button>
+        <button type="button" class="btn btn-danger" (click)="clearImage()">clear image</button>
         <span>
             <div>
                 <input type="file" (change)="previewFile($event)"><br>
