@@ -3,6 +3,9 @@
   <div class="input-group-prepend">
     <button type="button" class="btn btn-danger" (click)="remove()"><i class="material-icons" style="font-size: 18px;">clear</i></button>
   </div>
-  <input [(ngModel)]="dishItem.subject"type="txt" class="form-control" placeholder="מנה">
+  <input [(ngModel)]="dishItem.subject" type="txt" list="encodings" class="form-control" placeholder="מנה">
+  <datalist id="encodings">
+      <option *ngFor="let subject of subjects; let i = index">{{subject}}</option>
+  </datalist>
 </div>
 

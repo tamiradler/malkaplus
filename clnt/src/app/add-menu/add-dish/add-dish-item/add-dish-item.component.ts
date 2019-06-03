@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { DishItem } from 'src/swaggergenerate/models';
+import { DishItemSubjectsService } from './dish-item-subjects.service';
 
 @Component({
   selector: 'app-add-dish-item',
@@ -11,11 +12,15 @@ export class AddDishItemComponent implements OnInit {
   @Input() dishItem: DishItem;
   @Input() dishItems: Array<DishItem>;
   @Input() index: number;
-  constructor() { }
+  subjects: string[];
+  constructor(private dishItemSubjectsService: DishItemSubjectsService) {
+    dishItemSubjectsService.subjects$.subscribe(subjects => {
+      this.subjects = subjects;
+    })
+   }
 
   ngOnInit() {
   }
-
 
   remove() {
     this.dishItems.splice(this.index, 1);
