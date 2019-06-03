@@ -10,6 +10,13 @@ import { Menu } from 'src/swaggergenerate/models';
   styleUrls: ['./show-menu.component.css']
 })
 export class ShowMenuComponent implements OnInit, AfterViewInit, OnDestroy {
+  
+  hideEditorController: boolean = false;
+
+  hide() {
+    this.hideEditorController = true;
+  }
+
   ngOnDestroy(): void {
     this.navbarToggleService.data.isToShowNavBar = true;
   }

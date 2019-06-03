@@ -1,18 +1,25 @@
 <div id="contentWithImage" style="background-size: cover; width: 100%; height: 100%; ">
     <div class="container" style="padding-top: 100px;">
         <div class="row">
-            <div *ngFor="let dish of menu?.dishs; let i = index" class="col-4">
-                <h4 [style.color]="headlineColor">{{dish.subject}}</h4>
+            <div *ngFor="let dish of menu?.dishs; let i = index" class="col-4" style="padding-top: 50px; padding-right: 200px; font-size: 24px">
+                <h4 [style.color]="headlineColor"><strong>{{dish.subject}}</strong></h4>
                 <div *ngFor="let dishitem of dish?.dishItems; let i = index">
-                    <p [style.color]="contentColor"><strong>{{dishitem?.subject}}</strong></p>
+                    <p [style.color]="contentColor">{{dishitem?.subject}}</p>
                 </div>
             </div>
         </div>
     </div>
+    
+    <div class="container" style="position: absolute;" [hidden]="hideEditorController">
+        <button type="button" class="btn btn-danger" (click)="hide()"><i class="material-icons">clear</i></button>
+        <span>
+            <div>
+                <input type="file" (change)="previewFile($event)"><br>
+                <label>צבע כותרת</label><br>
+                <input type="color" id="headlineColor" (change)="headlineColorChange($event)" value="#ff0000" ><br>
+                <label>צבע תוכן</label><br>
+                <input type="color" id="contentColor" (change)="contentColorChange($event)" value="#ff0000" >
+            </div>
+        </span>
+    </div>
 </div>
-
-<input type="file" (change)="previewFile($event)"><br>
-<label>צבע כותרת</label><br>
-<input type="color" id="headlineColor" (change)="headlineColorChange($event)" value="#ff0000" ><br>
-<label>צבע תוכן</label><br>
-<input type="color" id="contentColor" (change)="contentColorChange($event)" value="#ff0000" >
