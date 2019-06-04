@@ -27,6 +27,10 @@
       "description": "Comment Rest Controller"
     },
     {
+      "name": "dish-item-subject-collection-rest-controller",
+      "description": "Dish Item Subject Collection Rest Controller"
+    },
+    {
       "name": "dish-rest-controller",
       "description": "Dish Rest Controller"
     },
@@ -55,6 +59,72 @@
             "description": "OK",
             "schema": {
               "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DistinctDishes": {
+      "get": {
+        "tags": [
+          "menu-rest-controller"
+        ],
+        "summary": "getDistinctDishes",
+        "operationId": "getDistinctDishesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DistinctSubjects": {
+      "get": {
+        "tags": [
+          "menu-rest-controller"
+        ],
+        "summary": "getDistinctSubjects",
+        "operationId": "getDistinctSubjectsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           },
           "401": {
@@ -183,6 +253,84 @@
                 "$ref": "#/definitions/Comment"
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/dishes": {
+      "get": {
+        "tags": [
+          "dish-rest-controller"
+        ],
+        "summary": "getDishes",
+        "operationId": "getDishesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Dish"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "dish-rest-controller"
+        ],
+        "summary": "addDish",
+        "operationId": "addDishUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "dish",
+            "description": "dish",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Dish"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Dish"
+            }
+          },
+          "201": {
+            "description": "Created"
           },
           "401": {
             "description": "Unauthorized"
@@ -462,8 +610,8 @@
         ],
         "parameters": [
           {
-            "in": "header",
             "name": "authTokenId",
+            "in": "header",
             "description": "authTokenId",
             "required": true,
             "type": "string"
@@ -483,189 +631,6 @@
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/Menu"
-            }
-          },
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/users": {
-      "get": {
-        "tags": [
-          "user-rest-controller"
-        ],
-        "summary": "getUser",
-        "operationId": "getUserUsingGET_1",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "authTokenId",
-            "in": "header",
-            "description": "authTokenId",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/DistinctDishes": {
-      "get": {
-        "tags": [
-          "menu-rest-controller"
-        ],
-        "summary": "getDistinctDishes",
-        "operationId": "getDistinctDishesUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/DistinctSubjects": {
-      "get": {
-        "tags": [
-          "menu-rest-controller"
-        ],
-        "summary": "getDistinctSubjects",
-        "operationId": "getDistinctSubjectsUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/dishes": {
-      "get": {
-        "tags": [
-          "dish-rest-controller"
-        ],
-        "summary": "getDishes",
-        "operationId": "getDishesUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Dish"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "deprecated": false
-      },
-      "post": {
-        "tags": [
-          "dish-rest-controller"
-        ],
-        "summary": "addDish",
-        "operationId": "addDishUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "dish",
-            "description": "dish",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Dish"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Dish"
             }
           },
           "201": {
@@ -741,6 +706,45 @@
               "items": {
                 "type": "string"
               }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "user-rest-controller"
+        ],
+        "summary": "getUser",
+        "operationId": "getUserUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "authTokenId",
+            "in": "header",
+            "description": "authTokenId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           },
           "401": {
@@ -860,6 +864,39 @@
         },
         "deprecated": false
       }
+    },
+    "/dishItemSubjects": {
+      "get": {
+        "tags": [
+          "dish-item-subject-collection-rest-controller"
+        ],
+        "summary": "getDishItemSubjects",
+        "operationId": "getDishItemSubjectsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
     }
   },
   "definitions": {
@@ -890,6 +927,33 @@
         }
       },
       "title": "Comment"
+    },
+    "Dish": {
+      "type": "object",
+      "properties": {
+        "dishItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DishItem"
+          }
+        },
+        "subject": {
+          "type": "string"
+        }
+      },
+      "title": "Dish"
+    },
+    "DishItem": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        }
+      },
+      "title": "DishItem"
     },
     "Menu": {
       "type": "object",
@@ -1046,33 +1110,6 @@
         }
       },
       "title": "View"
-    },
-    "Dish": {
-      "type": "object",
-      "properties": {
-        "dishItems": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/DishItem"
-          }
-        },
-        "subject": {
-          "type": "string"
-        }
-      },
-      "title": "Dish"
-    },
-    "DishItem": {
-      "type": "object",
-      "properties": {
-        "content": {
-          "type": "string"
-        },
-        "subject": {
-          "type": "string"
-        }
-      },
-      "title": "DishItem"
     }
   }
 }
