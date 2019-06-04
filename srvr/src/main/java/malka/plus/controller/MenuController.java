@@ -14,6 +14,7 @@ import malka.plus.maps.MenuModelToViewMapper;
 import malka.plus.maps.MenuViewToModelMapper;
 import malka.plus.model.DishItem;
 import malka.plus.repository.MenuRepository;
+import malka.plus.service.DishItemSubjectCollectionService;
 import malka.plus.view.Menu;
 
 @Controller
@@ -31,6 +32,9 @@ public class MenuController
 	@Autowired
 	private Authentication authentication;
 	
+	@Autowired
+	private DishItemSubjectCollectionService dishItemSubjectCollectionService;
+	
 	public List <Menu> getMenus() 
 	{
 		List <Menu> menus = new ArrayList<>();
@@ -42,6 +46,7 @@ public class MenuController
 	{
 		authentication.authenticatAndGetUser(authTokenId, UserSkillsConstants.ADMIN, UserSkillsConstants.MENU_EDITOR);
 		
+		dishItemSubjectCollectionService.saveSubjects(menu);
 		malka.plus.model.Menu menuModel = new malka.plus.model.Menu();
 		menuViewToModelMapper.apply(menu, menuModel);
 		menuRepository.save(menuModel);
