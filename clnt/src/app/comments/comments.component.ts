@@ -7,6 +7,8 @@ import { ErrorMessagesHolderService } from '../error-messages-holder-service';
 import { LoadSpinnerService } from '../load-spinner/load-spinner-service';
 import { DatePickerService } from '../date-picker/date-picker.service';
 
+declare var $: any; 
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -84,5 +86,15 @@ export class CommentsComponent implements OnInit {
     )
     this.comment = {
     };
+  }
+
+  openModal() {
+    this.user = this.userService.getUpdatedUser();
+
+    if (this.user == null) {
+      this.errorMessagesHolderService.addMessage('בשביל להוסיף תגובה צריך להתחבר');
+      return;
+    }
+    $('#commentModal').modal('show')
   }
 }
